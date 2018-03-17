@@ -1,0 +1,20 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+{% if todo_list %}
+	<div class="container-fluid">
+	<h1> TODO List </h1>
+	<div class="list-group">
+		{% for task in todo_list %}
+			<div class="list-group-item">
+				<a href="{% url 'todo:detail' task.id %}">{{ task.summary }}</a>
+			<div>
+		{% endfor %}
+	</div>
+	</div>
+{% else %}
+	<div class="well">	
+		<p> No tasks available </p>
+	</div>
+{% endif %}

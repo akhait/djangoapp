@@ -1,0 +1,19 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<div class="container-fluid">
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}
+<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+<div class="well">
+<h3>{{ task.summary }}</h3>
+<p> {{ task.due_date }} </p>
+<p> Priority: {{ task.get_priority_display }} </p>
+{% if not task.completed %}
+<a href="{% url 'todo:done' task.id %}">Set as completed</a>
+{% endif %} 
+</div>
+</div>
